@@ -1,0 +1,166 @@
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="650.0" prefWidth="1000.0"
+            style="-fx-background-color: #F2F2F2;"
+            xmlns="http://javafx.com/javafx/13"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ifrs.ibiruba.agendamentoservico.controller.TelaClientesController">
+
+    <top>
+        <VBox spacing="8.0"
+              style="-fx-background-color: #E2E2E2;">
+            <padding>
+                <Insets top="25" right="30" bottom="20" left="30"/>
+            </padding>
+
+            <Button text="← Voltar ao início"
+                    onAction="#voltarInicio"
+                    style="-fx-background-color: #F7F7F7;
+                           -fx-text-fill: #333333;
+                           -fx-border-color: #C8C8C8;
+                           -fx-border-radius: 4;
+                           -fx-background-radius: 4;
+                           -fx-cursor: hand;"/>
+
+            <Label text="Clientes"
+                   style="-fx-font-size: 24px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #333333;"/>
+
+            <Label text="Cadastre e gerencie os clientes do estabelecimento."
+                   style="-fx-font-size: 13px;
+                          -fx-text-fill: #666666;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="15.0">
+            <padding>
+                <Insets top="20" right="30" bottom="25" left="30"/>
+            </padding>
+
+            <VBox spacing="15"
+                  style="-fx-background-color: #FFFFFF;
+                         -fx-border-color: #D0D0D0;
+                         -fx-border-radius: 6;
+                         -fx-background-radius: 6;">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Dados do cliente"
+                       style="-fx-font-size: 17px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #333333;"/>
+
+                <GridPane hgap="15" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+
+                    <Label text="Nome:"
+                           style="-fx-text-fill: #444444;"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="0"/>
+
+                    <TextField fx:id="campoNome"
+                               promptText="Nome completo"
+                               GridPane.rowIndex="1"
+                               GridPane.columnIndex="0"/>
+
+                    <Label text="Telefone:"
+                           style="-fx-text-fill: #444444;"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1"/>
+
+                    <TextField fx:id="campoTelefone"
+                               promptText="Telefone"
+                               GridPane.rowIndex="1"
+                               GridPane.columnIndex="1"/>
+
+                    <Label text="E-mail:"
+                           style="-fx-text-fill: #444444;"
+                           GridPane.rowIndex="2"
+                           GridPane.columnIndex="0"/>
+
+                    <TextField fx:id="campoEmail"
+                               promptText="E-mail"
+                               GridPane.rowIndex="3"
+                               GridPane.columnIndex="0"/>
+                </GridPane>
+
+                <HBox spacing="10">
+                    <Button text="Salvar"
+                            onAction="#salvarCliente"
+                            style="-fx-background-color: #D6D6D6;
+                                   -fx-text-fill: #222222;
+                                   -fx-font-weight: bold;
+                                   -fx-background-radius: 4;
+                                   -fx-cursor: hand;"/>
+
+                    <Button text="Limpar"
+                            onAction="#limparCampos"
+                            style="-fx-background-color: #EEEEEE;
+                                   -fx-text-fill: #333333;
+                                   -fx-border-color: #CCCCCC;
+                                   -fx-background-radius: 4;
+                                   -fx-border-radius: 4;
+                                   -fx-cursor: hand;"/>
+
+                    <Button text="Excluir"
+                            onAction="#excluirCliente"
+                            style="-fx-background-color: #BDBDBD;
+                                   -fx-text-fill: #222222;
+                                   -fx-background-radius: 4;
+                                   -fx-cursor: hand;"/>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="12"
+                  VBox.vgrow="ALWAYS"
+                  style="-fx-background-color: #FFFFFF;
+                         -fx-border-color: #D0D0D0;
+                         -fx-border-radius: 6;
+                         -fx-background-radius: 6;">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Clientes cadastrados"
+                       style="-fx-font-size: 17px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #333333;"/>
+
+                <TextField fx:id="campoPesquisa"
+                           promptText="Pesquisar registros..."
+                           style="-fx-background-radius: 4;
+                                  -fx-border-color: #D0D0D0;
+                                  -fx-border-radius: 4;"/> 
+
+                <TableView fx:id="tabelaClientes"
+                           VBox.vgrow="ALWAYS"
+                           style="-fx-background-color: #FFFFFF;
+                                  -fx-border-color: #D0D0D0;">
+                    <columns>
+                        <TableColumn fx:id="colunaNome"
+                                     text="Nome"
+                                     prefWidth="300"/>
+
+                        <TableColumn fx:id="colunaTelefone"
+                                     text="Telefone"
+                                     prefWidth="200"/>
+
+                        <TableColumn fx:id="colunaEmail"
+                                     text="E-mail"
+                                     prefWidth="350"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>

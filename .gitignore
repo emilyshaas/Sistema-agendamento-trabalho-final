@@ -1,0 +1,19 @@
+# Maven
+/target/
+
+# Arquivos de distribuição
+/dist/
+
+# Configurações particulares do NetBeans
+/nbproject/private/
+
+# Banco de dados local (gerado automaticamente pelo Hibernate)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite-journal
+
+# Arquivos compilados
+*.class
+
+# Logs

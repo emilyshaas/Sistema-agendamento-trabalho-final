@@ -1,0 +1,195 @@
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="650.0" prefWidth="1000.0"
+            style="-fx-background-color: #F2F2F2;"
+            xmlns="http://javafx.com/javafx/13"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ifrs.ibiruba.agendamentoservico.controller.TelaAgendamentosController">
+
+    <!-- CABEÇALHO -->
+    <top>
+        <VBox spacing="10.0"
+              style="-fx-background-color: #E2E2E2;">
+
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+
+            <Button text="← Voltar ao início"
+                    onAction="#voltarInicio"
+                    maxWidth="150"
+                    style="-fx-background-color: #F7F7F7; -fx-text-fill: #333333; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+            <Label text="Agendamentos"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+
+            <Label text="Organize os atendimentos do estabelecimento."
+                   style="-fx-font-size: 13px; -fx-text-fill: #666666;"/>
+        </VBox>
+    </top>
+
+    <!-- CONTEÚDO -->
+    <center>
+        <VBox spacing="15.0">
+
+            <padding>
+                <Insets top="20" right="30" bottom="25" left="30"/>
+            </padding>
+
+            <!-- FORMULÁRIO -->
+            <VBox spacing="15"
+                  style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D0D0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 20;">
+
+                <Label text="Dados do agendamento"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+
+                <GridPane hgap="15" vgap="12">
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+
+                    <Label text="Cliente:"
+                           style="-fx-text-fill: #444444;"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="0"/>
+
+                    <ComboBox fx:id="comboCliente"
+                              promptText="Selecione o cliente"
+                              maxWidth="Infinity"
+                              GridPane.rowIndex="1"
+                              GridPane.columnIndex="0"/>
+
+                    <Label text="Profissional:"
+                           style="-fx-text-fill: #444444;"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1"/>
+
+                    <ComboBox fx:id="comboProfissional"
+                              promptText="Selecione o profissional"
+                              maxWidth="Infinity"
+                              GridPane.rowIndex="1"
+                              GridPane.columnIndex="1"/>
+
+                    <Label text="Serviço:"
+                           style="-fx-text-fill: #444444;"
+                           GridPane.rowIndex="2"
+                           GridPane.columnIndex="0"/>
+
+                    <ComboBox fx:id="comboServico"
+                              promptText="Selecione o serviço"
+                              maxWidth="Infinity"
+                              GridPane.rowIndex="3"
+                              GridPane.columnIndex="0"/>
+
+                    <Label text="Data:"
+                           style="-fx-text-fill: #444444;"
+                           GridPane.rowIndex="2"
+                           GridPane.columnIndex="1"/>
+
+                    <DatePicker fx:id="campoData"
+                                promptText="Selecione a data"
+                                maxWidth="Infinity"
+                                GridPane.rowIndex="3"
+                                GridPane.columnIndex="1"/>
+
+                    <Label text="Horário:"
+                           style="-fx-text-fill: #444444;"
+                           GridPane.rowIndex="4"
+                           GridPane.columnIndex="0"/>
+
+                    <TextField fx:id="campoHorario"
+                               promptText="Ex.: 14:30"
+                               GridPane.rowIndex="5"
+                               GridPane.columnIndex="0"/>
+
+                    <Label text="Situação:"
+                           style="-fx-text-fill: #444444;"
+                           GridPane.rowIndex="4"
+                           GridPane.columnIndex="1"/>
+
+                    <ComboBox fx:id="comboSituacao"
+                              promptText="Selecione a situação"
+                              maxWidth="Infinity"
+                              GridPane.rowIndex="5"
+                              GridPane.columnIndex="1"/>
+
+                </GridPane>
+
+                <!-- BOTÕES -->
+                <HBox spacing="10">
+
+                    <Button text="Salvar"
+                            onAction="#salvarAgendamento"
+                            style="-fx-background-color: #555555; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20; -fx-cursor: hand;"/>
+
+                    <Button text="Limpar"
+                            onAction="#limparCampos"
+                            style="-fx-background-color: #E2E2E2; -fx-text-fill: #333333; -fx-background-radius: 5; -fx-padding: 8 20; -fx-cursor: hand;"/>
+
+                    <Button text="Excluir"
+                            onAction="#excluirAgendamento"
+                            style="-fx-background-color: #BDBDBD; -fx-text-fill: #333333; -fx-background-radius: 5; -fx-padding: 8 20; -fx-cursor: hand;"/>
+
+                </HBox>
+
+            </VBox>
+
+            <!-- TABELA -->
+            <VBox spacing="12"
+                  style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D0D0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 18;"
+                  VBox.vgrow="ALWAYS">
+
+                <Label text="Agendamentos cadastrados"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+
+                <TextField fx:id="campoPesquisa"
+                           promptText="Pesquisar registros..."
+                           style="-fx-background-radius: 4;
+                                  -fx-border-color: #D0D0D0;
+                                  -fx-border-radius: 4;"/> 
+
+                <TableView fx:id="tabelaAgendamentos"
+                           VBox.vgrow="ALWAYS"
+                           style="-fx-background-color: white; -fx-border-color: #D0D0D0; -fx-border-radius: 4;">
+
+                    <columns>
+
+                        <TableColumn fx:id="colunaData"
+                                     text="Data"
+                                     prefWidth="120"/>
+
+                        <TableColumn fx:id="colunaHorario"
+                                     text="Horário"
+                                     prefWidth="100"/>
+
+                        <TableColumn fx:id="colunaCliente"
+                                     text="Cliente"
+                                     prefWidth="180"/>
+
+                        <TableColumn fx:id="colunaServico"
+                                     text="Serviço"
+                                     prefWidth="180"/>
+
+                        <TableColumn fx:id="colunaProfissional"
+                                     text="Profissional"
+                                     prefWidth="180"/>
+
+                        <TableColumn fx:id="colunaSituacao"
+                                     text="Situação"
+                                     prefWidth="130"/>
+
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

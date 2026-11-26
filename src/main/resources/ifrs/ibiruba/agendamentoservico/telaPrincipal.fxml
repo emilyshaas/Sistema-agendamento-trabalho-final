@@ -1,0 +1,235 @@
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="720.0" prefWidth="1100.0"
+            style="-fx-background-color: #F2F2F2;"
+            xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ifrs.ibiruba.agendamentoservico.controller.TelaPrincipalController">
+
+    <!-- MENU LATERAL -->
+    <left>
+        <VBox prefWidth="225.0" spacing="12.0"
+              style="-fx-background-color: #E2E2E2;">
+
+            <padding>
+                <Insets bottom="24" left="18" right="18" top="28"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="▦"
+                       style="-fx-font-size: 22px; -fx-text-fill: #555555;"/>
+
+                <VBox spacing="2">
+                    <Label text="Agendamento"
+                           style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+                    <Label text="SERVIÇO"
+                           style="-fx-font-size: 12px; -fx-text-fill: #666666;"/>
+                </VBox>
+            </HBox>
+
+            <Region prefHeight="18"/>
+
+            <Label text="MENU PRINCIPAL"
+                   style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
+
+            <Button maxWidth="Infinity"
+                    onAction="#mostrarInicio"
+                    text="Início"
+                    style="-fx-background-color: #CFCFCF; -fx-text-fill: #333333; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+            <Button maxWidth="Infinity"
+                    onAction="#mostrarClientes"
+                    text="Clientes"
+                    style="-fx-background-color: #F7F7F7; -fx-text-fill: #333333; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+            <Button maxWidth="Infinity"
+                    onAction="#mostrarProfissionais"
+                    text="Profissionais"
+                    style="-fx-background-color: #F7F7F7; -fx-text-fill: #333333; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+            <Button maxWidth="Infinity"
+                    onAction="#mostrarServicos"
+                    text="Serviços"
+                    style="-fx-background-color: #F7F7F7; -fx-text-fill: #333333; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+            <Button maxWidth="Infinity"
+                    onAction="#mostrarAgendamentos"
+                    text="Agendamentos"
+                    style="-fx-background-color: #F7F7F7; -fx-text-fill: #333333; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Label text="Sistema de gestão"
+                   style="-fx-font-size: 12px; -fx-text-fill: #555555;"/>
+
+            <Label text="Versão 1.0"
+                   style="-fx-font-size: 11px; -fx-text-fill: #777777;"/>
+
+        </VBox>
+    </left>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <center>
+        <VBox spacing="22">
+
+            <padding>
+                <Insets bottom="30" left="34" right="34" top="30"/>
+            </padding>
+
+            <!-- CABEÇALHO -->
+            <HBox alignment="CENTER_LEFT">
+
+                <VBox spacing="5">
+                    <Label text="Visão geral"
+                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+
+                    <Label text="Acompanhe os atendimentos do estabelecimento."
+                           style="-fx-font-size: 13px; -fx-text-fill: #666666;"/>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label fx:id="labelData"
+                       text="Painel inicial"
+                       style="-fx-font-size: 13px; -fx-text-fill: #555555;"/>
+
+            </HBox>
+
+            <!-- CARTÕES INFORMATIVOS -->
+            <HBox spacing="16">
+
+                <VBox spacing="10"
+                      style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D0D0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 18;"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="AGENDAMENTOS HOJE"
+                           style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
+
+                    <Label fx:id="labelAgendamentos" text="0"
+                           style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+
+                    <Label text="Atendimentos previstos"
+                           style="-fx-font-size: 12px; -fx-text-fill: #777777;"/>
+
+                </VBox>
+
+                <VBox spacing="10"
+                      style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D0D0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 18;"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="CLIENTES"
+                           style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
+
+                    <Label fx:id="labelClientes" text="0"
+                           style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+
+                    <Label text="Pessoas cadastradas"
+                           style="-fx-font-size: 12px; -fx-text-fill: #777777;"/>
+
+                </VBox>
+
+                <VBox spacing="10"
+                      style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D0D0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 18;"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="PROFISSIONAIS"
+                           style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
+
+                    <Label fx:id="labelProfissionais" text="0"
+                           style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+
+                    <Label text="Equipe cadastrada"
+                           style="-fx-font-size: 12px; -fx-text-fill: #777777;"/>
+
+                </VBox>
+
+                <VBox spacing="10"
+                      style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D0D0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 18;"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="SERVIÇOS"
+                           style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
+
+                    <Label fx:id="labelServicos" text="0"
+                           style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+
+                    <Label text="Opções disponíveis"
+                           style="-fx-font-size: 12px; -fx-text-fill: #777777;"/>
+
+                </VBox>
+
+            </HBox>
+
+            <!-- TABELA DE AGENDAMENTOS -->
+            <VBox spacing="14"
+                  style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D0D0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 18;"
+                  VBox.vgrow="ALWAYS">
+
+                <HBox alignment="CENTER_LEFT">
+
+                    <VBox spacing="5">
+                        <Label text="Próximos agendamentos"
+                               style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+
+                        <Label text="Confira os atendimentos cadastrados no sistema."
+                               style="-fx-font-size: 12px; -fx-text-fill: #777777;"/>
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Button onAction="#novoAgendamento"
+                            text="+ Novo agendamento"
+                            style="-fx-background-color: #555555; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 9 15; -fx-cursor: hand;"/>
+
+                </HBox>
+
+                <TableView fx:id="tabelaAgendamentos"
+                           VBox.vgrow="ALWAYS"
+                           style="-fx-background-color: white; -fx-border-color: #D0D0D0; -fx-border-radius: 4;">
+
+                    <columns>
+
+                        <TableColumn fx:id="colunaHorario"
+                                     prefWidth="100"
+                                     text="Horário"/>
+
+                        <TableColumn fx:id="colunaCliente"
+                                     prefWidth="180"
+                                     text="Cliente"/>
+
+                        <TableColumn fx:id="colunaServico"
+                                     prefWidth="170"
+                                     text="Serviço"/>
+
+                        <TableColumn fx:id="colunaProfissional"
+                                     prefWidth="170"
+                                     text="Profissional"/>
+
+                        <TableColumn fx:id="colunaSituacao"
+                                     prefWidth="130"
+                                     text="Situação"/>
+
+                    </columns>
+
+                    <placeholder>
+                        <Label text="Nenhum agendamento cadastrado."
+                               style="-fx-text-fill: #777777;"/>
+                    </placeholder>
+
+                </TableView>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>
